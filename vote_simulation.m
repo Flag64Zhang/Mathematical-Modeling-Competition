@@ -68,18 +68,6 @@ legend('理论(Binom)', '模拟(MC)');
 title('灵敏度分析：出席人数 n 对当选概率的影响');
 grid on;
 
-// % --- 灵敏度系数计算与绘图 ---
-// S_theory_n = diff(P_theory_list) ./ diff(n_range) .* (n_range(1:end-1) ./ P_theory_list(1:end-1));
-// S_sim_n = diff(P_sim_list) ./ diff(n_range) .* (n_range(1:end-1) ./ P_sim_list(1:end-1));
-// figure;
-// plot(n_range(1:end-1), S_theory_n, '-o', 'LineWidth',1.5); hold on;
-// plot(n_range(1:end-1), S_sim_n, '-s', 'LineWidth',1.5);
-// xlabel('实到专家人数 n');
-// ylabel('灵敏度系数 S');
-// legend('理论', '模拟');
-// title('灵敏度系数：n 对当选概率的影响');
-// grid on;
-
 %% ----------------- 灵敏度分析（k/m变化） -----------------
 fprintf('\n=== 灵敏度分析 (k/m变化) ===\n');
 n = 15; m = 5; % 固定为实例 A
@@ -118,19 +106,6 @@ ylabel('单候选人当选概率');
 legend('理论(Binom)', '模拟(MC)');
 title('灵敏度分析：投票比例 k/m 对当选概率的影响');
 grid on;
-
-// % --- 灵敏度系数计算与绘图 ---
-// k_m_vec = k_range/m;
-// S_theory_km = diff(P_theory_list_k) ./ diff(k_m_vec) .* (k_m_vec(1:end-1) ./ P_theory_list_k(1:end-1));
-// S_sim_km = diff(P_sim_list_k) ./ diff(k_m_vec) .* (k_m_vec(1:end-1) ./ P_sim_list_k(1:end-1));
-// figure;
-// plot(k_m_vec(1:end-1), S_theory_km, '-o', 'LineWidth',1.5); hold on;
-// plot(k_m_vec(1:end-1), S_sim_km, '-s', 'LineWidth',1.5);
-// xlabel('投票比例 k/m');
-// ylabel('灵敏度系数 S');
-// legend('理论', '模拟');
-// title('灵敏度系数：k/m 对当选概率的影响');
-// grid on;
 
 %% ----------------- 灵敏度分析（阈值比例α变化） -----------------
 fprintf('\n=== 灵敏度分析 (阈值比例α变化) ===\n');
@@ -171,17 +146,6 @@ legend('理论(Binom)', '模拟(MC)');
 title('灵敏度分析：阈值比例 α 对当选概率的影响');
 grid on;
 
-// % --- 灵敏度系数计算与绘图 ---
-// S_theory_alpha = diff(P_theory_list_alpha) ./ diff(alpha_range) .* (alpha_range(1:end-1) ./ P_theory_list_alpha(1:end-1));
-// S_sim_alpha = diff(P_sim_list_alpha) ./ diff(alpha_range) .* (alpha_range(1:end-1) ./ P_sim_list_alpha(1:end-1));
-// figure;
-// plot(alpha_range(1:end-1), S_theory_alpha, '-o', 'LineWidth',1.5); hold on;
-// plot(alpha_range(1:end-1), S_sim_alpha, '-s', 'LineWidth',1.5);
-// xlabel('阈值比例 α');
-// ylabel('灵敏度系数 S');
-// legend('理论', '模拟');
-// title('灵敏度系数：α 对当选概率的影响');
-// grid on;
 
 %% ----------------- 灵敏度分析（候选人数m变化） -----------------
 fprintf('\n=== 灵敏度分析 (候选人数m变化) ===\n');
@@ -222,18 +186,6 @@ ylabel('单候选人当选概率');
 legend('理论(Binom)', '模拟(MC)');
 title('灵敏度分析：候选人数 m 对当选概率的影响');
 grid on;
-
-// % --- 灵敏度系数计算与绘图 ---
-// S_theory_m = diff(P_theory_list_m) ./ diff(m_range) .* (m_range(1:end-1) ./ P_theory_list_m(1:end-1));
-// S_sim_m = diff(P_sim_list_m) ./ diff(m_range) .* (m_range(1:end-1) ./ P_sim_list_m(1:end-1));
-// figure;
-// plot(m_range(1:end-1), S_theory_m, '-o', 'LineWidth',1.5); hold on;
-// plot(m_range(1:end-1), S_sim_m, '-s', 'LineWidth',1.5);
-// xlabel('候选人数 m');
-// ylabel('灵敏度系数 S');
-// legend('理论', '模拟');
-// title('灵敏度系数：m 对当选概率的影响');
-// grid on;
 
 %% ----------------- 全局敏感性分析（m） -----------------
 fprintf('\n=== 全局敏感性分析 (只分析m对P的影响，其他参数固定) ===\n');
