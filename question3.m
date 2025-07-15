@@ -54,7 +54,7 @@ title('m=5时，不同n下R的概率分布');
 colorbar;
 set(gca,'YDir','normal');
 
-%% 分组柱状图展示当选总人数R的概率分布（draft.m功能）
+%% 分组柱状图不同候选人数m、到场专家数n展示当选总人数R的概率分布
 m_list = [5, 7, 9];
 n_list_bar = 10:2:18;
 iterations = 10000;

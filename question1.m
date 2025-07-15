@@ -90,3 +90,18 @@ end
 for i = 1:params_B.m
     fprintf('实例B 候选人%d: %s\n', i, mat2str(P_B(i,:),3));
 end
+
+% 输出为表格形式，便于查阅
+T_A = array2table(P_A, 'VariableNames', compose('n%d', n_list), 'RowNames', compose('A_候选人%d', 1:params_A.m));
+T_B = array2table(P_B, 'VariableNames', compose('n%d', n_list), 'RowNames', compose('B_候选人%d', 1:params_B.m));
+disp('实例A概率表：'); disp(T_A);
+disp('实例B概率表：'); disp(T_B);
+
+% 分票效应分析结果输出
+fprintf('\n分票效应分析（n=%d时，不同m下每位候选人达标概率）：\n', n_fixed);
+for i = 1:length(m_list)
+    m = m_list(i);
+    fprintf('m=%d: ', m);
+    fprintf('%.3f ', P_m(1:m,i));
+    fprintf('\n');
+end
