@@ -1,5 +1,5 @@
 % 投票选拔问题 - 决策变量n、k/m、α、m及m、n联合分布的灵敏度分析
-% 文件名: sensitivity_analysis.m
+% 文件名: question4.m
 
 clear; clc; close all;
 %% 全局参数

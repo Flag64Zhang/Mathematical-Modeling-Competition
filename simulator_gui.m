@@ -1,5 +1,5 @@
 % 投票选拔问题 可调节参数 GUI
-% 文件名: vote_gui.m
+% 文件名: simulator_gui.m
 
 function vote_gui
     % 创建界面
