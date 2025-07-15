@@ -33,7 +33,9 @@ function vote_gui
     function runSimulation
         n = nEdit.Value;
         m = mEdit.Value;
-        k = kEdit.Value;
+        % 自动设置k和s
+        k = floor(m/2) + 1;
+        s = floor(m/2);
         M = MEdit.Value;
         alpha = alphaEdit.Value;
 
@@ -46,6 +48,7 @@ function vote_gui
         % 蒙特卡洛
         success = 0;
         R_list = zeros(M,1);
+        final_success = 0;
         for iter = 1:M
             votes = zeros(1,m);
             for expert = 1:n
@@ -54,14 +57,23 @@ function vote_gui
             end
             success = success + (votes(1) >= t);
             R_list(iter) = sum(votes >= t);
+            % 推优名额限制
+            winners = find(votes >= t);
+            if length(winners) > s
+                [~, idx] = sort(votes(winners), 'descend');
+                winners = winners(idx(1:s));
+            end
+            final_success = final_success + ismember(1, winners);
         end
         P_sim = success / M;
+        P_final = final_success / M;
 
         % 显示结果
-        result = sprintf(['参数: n=%d, m=%d, k=%d, α=%.2f, t=%d\n' ...
+        result = sprintf(['参数: n=%d, m=%d, k=%d, s=%d, α=%.2f, t=%d, M=%d\n' ...
                           '单候选人理论值：%.4f\n' ...
-                          '单候选人模拟值：%.4f\n'], ...
-                          n, m, k, alpha, t, P_theory, P_sim);
+                          '单候选人模拟值（达标）：%.4f\n' ...
+                          '单候选人最终推优概率：%.4f\n'], ...
+                          n, m, k, s, alpha, t, M, P_theory, P_sim, P_final);
         txt.Value = result;
 
         % 绘图
